@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Main Menu</title>
 </head>
 <body>
-    
+    <h1>Main Menu</h1>
+    <ul id="menuList"></ul>
+
+    <script>
+        let host = "http://localhost:8080";
+
+        getTheMenu();
+
+        async function getTheMenu() {
+            let response = await fetch(host + "/merger");
+            let menu = await response.json();
+            let menuList = document.getElementById("menuList");
+            menu.forEach(item => {
+                let menuItem = document.createElement("li");
+                menuItem.textContent = item.name + " - $" + item.price.toFixed(2);
+                menuList.appendChild(menuItem);
+            });
+        }
+
+    </script>
 </body>
 </html>
