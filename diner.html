@@ -12,13 +12,13 @@
     </div>
 
     <script>
-      let host = "http://localhost:8080";
+      let host = "http://localhost:8080/merger";
       let menuDiv = document.getElementById("menu");
 
       displayTheMenu();
 
       async function getTheMenu() {
-        let response = await fetch(host + "/diner");
+        let response = await fetch(host + "/supper");
         let menu = await response.json();
         return menu;
       }
